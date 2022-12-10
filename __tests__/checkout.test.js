@@ -3,5 +3,31 @@
 3 - As a user, I would like to be able to see the total price of all items in my basket.
 4 - As a user, I would like to be able to remove an item from my basket.
  */
-const {} = require("../data/data");
-const {} = require("../checkout");
+const { orange, pineapple, kiwi, apple, banana, catalogue } = require("../data/data");
+const { scanBarcode, addItem, basket, sumPrice } = require("../checkout");
+
+    describe("selfCheckout", () => {
+        it('returns the details of an item from the barcode', () => {
+            expect(scanBarcode(orange.barcode)).toBe(orange);
+        });
+        it('returns the details of an item from the barcode', () => {
+            expect(scanBarcode(kiwi.barcode)).toBe(kiwi);
+        });
+})
+
+ describe("addItem", () => {
+    it('adds an item to the basket array', () => {
+        expect(basket.length).toBe(0)
+        addItem(kiwi, basket)
+        expect(basket.length).toBe(1)
+    });
+   /* it('returns the details of an item from the barcode', () => {
+        expect(addItem(orange)).toBe([orange]);
+    }); */
+
+    describe("sumPrice", () => {
+        it('returns the total price of all items within the basket', () => {
+        expect (sumPrice(kiwi)).toEqual(25);
+        });
+    
+}) 
