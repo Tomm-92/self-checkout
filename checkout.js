@@ -36,13 +36,26 @@ return basket.push(itemToAdd);
 };
 
 const sumPrice = (prices) => {
-const totalPrice = basket.reduce(acc, price) => [
+return prices.reduce((acc, price) => {
 return acc + price.price;
-]
-}
+},0)
+};
+
+/*const removeItem = (itemToRemove) => {
+return basket.pop(itemToRemove); 
+}; */
+
+
+const removeItem = function (product, trolley) {
+    const index = trolley.findIndex(item => item === product);
+   trolley = trolley.splice(index, 1) 
+   console.log('splice', trolley.splice(index, 1))
+};
 
 
 
 
 
-module.exports = { scanBarcode, addItem, basket, sumPrice };
+
+
+module.exports = { scanBarcode, addItem, basket, sumPrice, removeItem };
